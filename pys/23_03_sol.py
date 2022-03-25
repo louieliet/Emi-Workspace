@@ -1,3 +1,23 @@
+"""
+1- Crea una clase llamada Cuenta que tendrá los siguientes atributos: 
+- Número de cuenta
+- Nombre del Titular
+- Cantidad
+- RFC
+2- Crea un constructor de dicha clase que le de valor a los atributos Número de cuenta y Nombre del Titular a través de sus parámetros de entrada.
+3- Genera dos métodos:
+	Ingresar(cantidad): se ingresa una cantidad a la cuenta, si la cantidad introducida es negativa, no se hará nada y se emitirá un cartel que diga “Cantidad incorrecta”. Si es positiva se suma a la cantidad que ya se tenga.
+	Retirar(cantidad): Se retira una cantidad a la cuenta. Si la cantidad introducida es negativa, no se hará nada y se emitirá un cartel que diga “Cantidad incorrecta”. Si restando la cantidad actual a la que nos pasan la cantidad de la cuenta queda negativa, la cantidad de la cuenta pasa a ser 0, de lo contrario se resta a la cantidad. 
+
+4- Genere dos subclases de la clase Cuenta que sean Cuenta_Individual y Cuenta_Corporativa. Esas subclases tendrán, además de los demás atributos, el atributo de persona que valdrá “Persona Física” para Cuenta_Individual y “Persona Moral” para Cuenta_Corporativa.
+
+5- Genere una subclase Mixta que herede de Cuenta_Individual y Cuenta_Corporativa y que en el atributo de persona tenga el valor de “Indistinto”.
+
+6- La clase Mixta debe tener un destructor que emita un cartel que diga que ese objeto fue eliminado.
+
+7- Genere tantos objetos como sea necesario para mostrar las funcionalidades de las tres subclases.
+
+"""
 class Cuenta:
     def __init__(self, No_cuenta, Nombre, RFC):
         self.numero_de_cuenta = No_cuenta
