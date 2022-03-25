@@ -1,6 +1,4 @@
 class Cuenta:
-    ncuenta=""
-    ntitular=""
     cantidad=0
     rfc=""
     def __init__(self,ncuenta,ntitular):
