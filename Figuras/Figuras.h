@@ -1,42 +1,43 @@
+#pragma once
 #include <iostream> 
 #include <stdio.h> 
 using namespace std;
 
 class Figura {
-    public: 
+public:
     Figura();
     virtual double getArea() const = 0;
     virtual double getPerimetro() const = 0;
     virtual void Dibujar() const = 0;
 
-    private: 
+private:
     double area;
     double perimetro;
 };
 
-class Rectangulo:public Figura
+class Rectangulo :public Figura
 {
-    public:
+public:
     Rectangulo(double ancho, double altura);
     virtual double getArea() const override;
     virtual double getPerimetro() const override;
     virtual void Dibujar() const override;
 
-    private:
+private:
     double ancho;
-    double altura;   
+    double altura;
 };
 
-class Cuadrado: public Figura {
-    public: Cuadrado(double lado);
-    virtual double getArea()
-    const override;
-    virtual double getPerimetro()
-    const override;
-    virtual void Dibujar()
-    const override;
+class Cuadrado : public Figura {
+public: Cuadrado(double lado);
+      virtual double getArea()
+          const override;
+      virtual double getPerimetro()
+          const override;
+      virtual void Dibujar()
+          const override;
 
-    private:
+private:
     double lado;
     Rectangulo* rect;
 
