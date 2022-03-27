@@ -58,9 +58,9 @@ class Estudiante(Persona):
             print("Es menor de edad")
 
 class Profesionista_Alto_Nivel(Profesionista,Estudiante):
-    def __init__(self, nombre, edad, sexo, peso, grado):
-        Profesionista.__init__(nombre,edad,sexo,peso,grado)
-        Estudiante.__init__(self)
+    def __init__(self, nombre, edad, sexo, peso, grado,nivel_de_estudios):
+        Profesionista.__init__(self, nombre, edad, sexo, peso, grado)
+        Estudiante.__init__(self, nombre,edad,sexo,peso,nivel_de_estudios)
         self.nivel_de_estudios="Posgrado"
     
     def esMayorDeEdad(self):
@@ -80,7 +80,7 @@ p2=Estudiante("Ari",19,"M",50,"2do")
 p2.llenarRFC()
 p2.Altura()
 
-p3=Profesionista_Alto_Nivel("Liz",19,"M",45,"Licenciatura")
+p3=Profesionista_Alto_Nivel("Liz",19,"M",45,"Licenciatura"," ")
 p3.llenarRFC()
 p3.Altura()
 
