@@ -1,3 +1,6 @@
+from asyncore import poll3
+
+
 class Persona:
     def __init__(self,nombre, edad, sexo,peso):
         self.nombre=nombre
@@ -58,11 +61,10 @@ class Estudiante(Persona):
             print("Es menor de edad")
 
 class Profesionista_Alto_Nivel(Profesionista,Estudiante):
-    def __init__(self, nombre, edad, sexo, peso, grado,nivel_de_estudios):
-        Profesionista.__init__(self, nombre, edad, sexo, peso, grado)
-        Estudiante.__init__(self, nombre,edad,sexo,peso,nivel_de_estudios)
-        self.nivel_de_estudios="Posgrado"
-    
+    nivel_de_estudios="Posgrado"
+    def __init__(self, nombre, edad, sexo, peso, grado):
+        super().__init__(self, nombre, edad, sexo, peso, grado,)
+        
     def esMayorDeEdad(self):
         if self.edad>=18:
             print("Es mayor de edad y profesionista")
@@ -80,18 +82,21 @@ p2=Estudiante("Ari",19,"M",50,"2do")
 p2.llenarRFC()
 p2.Altura()
 
-p3=Profesionista_Alto_Nivel("Liz",19,"M",45,"Licenciatura"," ")
-p3.llenarRFC()
-p3.Altura()
+#p3=Profesionista_Alto_Nivel("Liz",19,"M",45,"Licenciatura")
+#p3.llenarRFC()
+#p3.Altura()
+
 
 p1.calcularIMC()
 p2.calcularIMC()
-p3.calcularIMC()
+#p3.calcularIMC()
+
 
 p1.esMayorDeEdad()
 p2.esMayorDeEdad()
-p3.esMayorDeEdad()
+#p3.esMayorDeEdad()
+
 
 p1.mostrarDatos()
 p2.mostrarDatos()
-p3.mostrarDatos()
+#p3.mostrarDatos()
