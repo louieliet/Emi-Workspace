@@ -59,7 +59,6 @@ class Estudiante(Persona):
 
 class Profesionista_Alto_Nivel(Profesionista,Estudiante):
     def __init__(self, nombre, edad, sexo, peso, grado):
-        
         Profesionista.__init__(nombre,edad,sexo,peso,grado)
         Estudiante.__init__(self)
         self.nivel_de_estudios="Posgrado"
