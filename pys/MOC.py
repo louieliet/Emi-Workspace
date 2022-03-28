@@ -61,18 +61,22 @@ class Estudiante(Persona):
             print("Es menor de edad")
 
 class Profesionista_Alto_Nivel(Profesionista,Estudiante):
-    nivel_de_estudios="Posgrado"
     def __init__(self, nombre, edad, sexo, peso, grado):
-        super().__init__(self, nombre, edad, sexo, peso, grado,)
-        
+        self.nombre = nombre
+        self.edad = int(edad)
+        self.sexo = sexo
+        self.peso = int(peso)
+        self.altura = 0
+        self.__RFC = ''
+        self.grado_de_estudios = grado
+        self.nivel_de_estudios = 'Posgrado'
+
     def esMayorDeEdad(self):
-        if self.edad>=18:
-            print("Es mayor de edad y profesionista")
-        elif self.edad<18:
-            print("Parece que esta es una persona superdotada porque es Profesionista sin ser mayor de edad")
+        Profesionista.esMayorDeEdad(self)
     
     def __del__(self):
         print("Este profesionista de alto nivel fue eliminado")
+        
 
 p1=Profesionista("Emi",19,"H",45,2)
 p1.llenarRFC()
@@ -82,23 +86,22 @@ p2=Estudiante("Ari",19,"M",50,"2do")
 p2.llenarRFC()
 p2.Altura()
 
-#p3=Profesionista_Alto_Nivel("Liz",19,"M",45,"Licenciatura")
-#p3.llenarRFC()
-#p3.Altura()
+p3=Profesionista_Alto_Nivel("Liz",19,"M",45,"Licenciatura")
+p3.llenarRFC()
+p3.Altura()
 
 
 p1.calcularIMC()
 p2.calcularIMC()
-#p3.calcularIMC()
+p3.calcularIMC()
 
 
 p1.esMayorDeEdad()
 p2.esMayorDeEdad()
-#p3.esMayorDeEdad()
+p3.esMayorDeEdad()
 
 
 p1.mostrarDatos()
 p2.mostrarDatos()
-#p3.mostrarDatos()
+p3.mostrarDatos()
 
-#PENEEEEEEEEEEEEEE
