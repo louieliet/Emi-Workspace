@@ -1,6 +1,3 @@
-from asyncore import poll3
-
-
 class Persona:
     def __init__(self,nombre, edad, sexo,peso):
         self.nombre=nombre
