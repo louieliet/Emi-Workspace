@@ -19,7 +19,33 @@ int main() {
     // set floating-point formatting
     cout << fixed << setprecision(2);
 
-    Employee* obj= new SalariedEmployee("John", "Smith", "111-11-1111", 800);
+    CommissionEmployee comissionEmployee{"Sue","Jones","222-22-2222",1000,0.6};
+    BasePlusCommissionEmployee basepluscomissionemployee{"Bob","Lewis","333-33-3333",5000,0.4,300};
+    CommissionEmployee* comissionEmployeePtr{&comissionEmployee};
+
+
+    cout<<"Calling toString() with a Base-Class pointer to\n ";
+    cout<<comissionEmployeePtr->toString();
+
+
+    CommissionEmployee* commissionEmployeePtr=&basepluscomissionemployee;
+    cout<<"calling to string with base-class pointer to";
+    cout<<commissionEmployeePtr->toString();
+
+    cout << "Display Base-Class and Derived-Class objects:\n";
+    cout<<comissionEmployee.toString();
+    cout<<"\n\n";
+    cout<<basepluscomissionemployee.toString();
+
+    //Assinging the adress of a base-class object to a derived-class pointer, results error
+    //ComissionEmployee comissionEpmployeee{"sue","Jones","222-222",100,0.6}
+    //BasePlussCommissionEmployee* basePlusCommissionEmployeePtr{&commissionEmployeee}
+
+    //Las diapositivas XD
+
+    //DOWNCASTING
+    
+    /*Employee* obj= new SalariedEmployee("John", "Smith", "111-11-1111", 800);
     //SalariedEmployee* obj= new SalariedEmployee("John", "Smith", "111-11-1111", 800);
     cout<<obj->toString();
     CommissionEmployee* bar = (CommissionEmployee*)obj;
@@ -69,20 +95,6 @@ int main() {
         cout << "deleting object of " << typeid( * employeePtr).name() << endl;
 
         delete employeePtr;
-    }
+    }*/
 }
 
-/**************************************************************************
- * (C) Copyright 1992-2017 by Deitel & Associates, Inc. and               *
- * Pearson Education, Inc. All Rights Reserved.                           *
- *                                                                        *
- * DISCLAIMER: The authors and publisher of this book have used their     *
- * best efforts in preparing the book. These efforts include the          *
- * development, research, and testing of the theories and programs        *
- * to determine their effectiveness. The authors and publisher make       *
- * no warranty of any kind, expressed or implied, with regard to these    *
- * programs or to the documentation contained in these books. The authors *
- * and publisher shall not be liable in any event for incidental or       *
- * consequential damages in connection with, or arising out of, the       *
- * furnishing, performance, or use of these programs.                     *
- **************************************************************************/
