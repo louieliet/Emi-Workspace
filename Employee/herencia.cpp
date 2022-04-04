@@ -27,12 +27,6 @@ int main1() {
     
     double baseSalary= ((BasePlusCommissionEmployee*)comissionEmployeePtr)->getBaseSalary();
     ((BasePlusCommissionEmployee*)comissionEmployeePtr)->setBaseSalary(500);
-
-  
-   
-
-
-
     return 0;
 
 
