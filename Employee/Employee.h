@@ -23,6 +23,7 @@ public:
     virtual double earnings() const = 0; // pure virtual
     //Funci�n virtual: puede anularse en clases derivadas
     virtual std::string toString() const; // virtual 
+  
           
 private:
     std::string firstName;

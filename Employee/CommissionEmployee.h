@@ -7,6 +7,10 @@
 
 class CommissionEmployee : public Employee {
 public:
+    friend iostream& operator<<(iostream& out, CommissionEmployee& ce)
+    {
+        out<< "Commission employee: "<<ce.grossSales<<ce.commissionRate<<endl;
+    }
     CommissionEmployee(const std::string&, const std::string&,
         const std::string&, double = 0.0, double = 0.0);
     virtual ~CommissionEmployee() = default; // virtual destructor

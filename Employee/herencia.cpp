@@ -15,13 +15,26 @@
 #include "BasePlusCommissionEmployee.cpp"
 using namespace std;
 
-int main() {
+int main1() {
     // set floating-point formatting
     cout << fixed << setprecision(2);
 
     CommissionEmployee comissionEmployee{"Sue","Jones","222-22-2222",1000,0.6};
+    CommissionEmployee* c1= new CommissionEmployee("Bob","Lewis","333-33-3333",5000,0.4);
     BasePlusCommissionEmployee basepluscomissionemployee{"Bob","Lewis","333-33-3333",5000,0.4,300};
     CommissionEmployee* comissionEmployeePtr{&comissionEmployee};
+    
+    
+    double baseSalary= ((BasePlusCommissionEmployee*)comissionEmployeePtr)->getBaseSalary();
+    ((BasePlusCommissionEmployee*)comissionEmployeePtr)->setBaseSalary(500);
+
+  
+   
+
+
+
+    return 0;
+
 
 
     cout<<"Calling toString() with a Base-Class pointer to\n ";
@@ -41,7 +54,7 @@ int main() {
     //ComissionEmployee comissionEpmployeee{"sue","Jones","222-222",100,0.6}
     //BasePlussCommissionEmployee* basePlusCommissionEmployeePtr{&commissionEmployeee}
 
-    //Las diapositivas XD
+    //Las diapositivas 
 
     //DOWNCASTING
     
@@ -57,7 +70,7 @@ int main() {
     return 0;
 
 
-    // ya dale clases de programación a este brother (:
+    
 
     // create and initialize vector of three base-class pointers
     vector < Employee *> employees {
@@ -66,7 +79,7 @@ int main() {
         new BasePlusCommissionEmployee("Bob", "Lewis", "444-44-4444", 5000, .04, 300)
     };
 
-//sites.google.com/up.edu.mx/poo/mis-clases/tema_4
+
 
     // polymorphically process each element in vector employees
     for (Employee * employeePtr : employees) {
