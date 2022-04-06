@@ -23,3 +23,13 @@ int main() {
     cout<<r1->getPerimetro()<<endl;
     r1->Dibujar();*/
 };
+
+class A{
+    int a;
+public:
+    A(int a){this->a=a;}
+    bool operator>(A& obj){return this->a<obj.a;}
+};
+
+//downcasting = detectar un error al momento de compilar
+//castingstatic = 
