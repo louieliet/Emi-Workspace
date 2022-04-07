@@ -2,12 +2,12 @@
 using namespace std;
 
 Figura::Figura() {
-    cout << "Se está creando la figura" << endl;
+    cout << "Se esta creando la figura" << endl;
 };
 
 Rectangulo::Rectangulo(double ancho, double altura)
 {
-    cout << "Se está creando un rectangulo" << endl;
+    cout << "Se esta creando un rectangulo" << endl;
     this->ancho = ancho;
     this->altura = altura;
 };
@@ -22,12 +22,12 @@ double Rectangulo::getPerimetro() const
 };
 
 void Rectangulo::Dibujar() const {
-    cout << "Se dibujó el rectangulo de ancho: " << ancho << ", y de alto: " << altura << endl;
+    cout << "Se dibujo el rectangulo de ancho: " << ancho << ", y de alto: " << altura << endl;
 };
 
 Cuadrado::Cuadrado(double lado)
 {
-    cout << "Se está creando un cuadrado" << endl;
+    cout << "Se esta creando un cuadrado" << endl;
     this->lado = lado;
     this->rect = new Rectangulo(lado, lado);
 };
@@ -44,5 +44,5 @@ double Cuadrado::getPerimetro() const
 
 void Cuadrado::Dibujar() const
 {
-    cout << "Se dibujó un cuadrado de lado:" << lado << endl;
+    cout << "Se dibujo un cuadrado de lado:" << lado << endl;
 };
