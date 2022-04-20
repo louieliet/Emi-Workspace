@@ -9,20 +9,34 @@ template <typename T> void printVector(const vector<T>& integers2);
 
 class A
 {
+
+private:
+
    int a;
    int b;
+
 public:
+
    A(int a, int b)
    {
       this->a=a;
       this->b=b;
    }
+   int operator[](int i)
+   {
+      if(i == 0)
+         return a;
+      else
+         return b;
+   }
+
    friend ostream& operator<<(ostream& out, const A& obj)
    {
       out << "Un objeto de tipo A" << endl;
       out << "a = " << obj.a << ",b = " << obj.b << endl;
       return out;
    }
+
 };
 
 int main() {
@@ -39,7 +53,10 @@ int main() {
    vectorA.push_back(A(0,0));                           
    vectorA.push_back(A(1,1));                           
    vectorA.push_back(A(2,2));
-   printVector(vectorA);                           
+   printVector(vectorA);
+   cout << vectorA[2][0] << endl;     
+   cout << vectorA.operator[](2).operator[](0) << endl;    
+   cout << vectorA[2] << endl;                  
 
    cout << "\nThe size of integers is: " << integers.size()
       << "\nThe capacity of integers is: " << integers.capacity();
