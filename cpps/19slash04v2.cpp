@@ -49,12 +49,14 @@ int main() {
    integers.push_back(2);                            
    integers.push_back(3);                            
    integers.push_back(4); 
+
+
    vector<A> vectorA;
    vectorA.push_back(A(0,0));                           
-   vectorA.push_back(A(1,1));                           
-   vectorA.push_back(A(2,2));
+   vectorA.push_back(A(1,5));                           
+   vectorA.push_back(A(2,3));
    printVector(vectorA);
-   cout << vectorA[2][0] << endl;     
+   cout << vectorA[1][1] << endl;     
    cout << vectorA.operator[](2).operator[](0) << endl;    
    cout << vectorA[2] << endl;                  
 
