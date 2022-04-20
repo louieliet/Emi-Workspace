@@ -7,6 +7,24 @@ using namespace std;
 // prototype for function template printVector
 template <typename T> void printVector(const vector<T>& integers2);
 
+class A
+{
+   int a;
+   int b;
+public:
+   A(int a, int b)
+   {
+      this->a=a;
+      this->b=b;
+   }
+   friend ostream& operator<<(ostream& out, const A& obj)
+   {
+      out << "Un objeto de tipo A" << endl;
+      out << "a = " << obj.a << ",b = " << obj.b << endl;
+      return out;
+   }
+};
+
 int main() {
    vector<int> integers; // create vector of ints
 
@@ -16,7 +34,12 @@ int main() {
    // function push_back is in vector, deque and list
    integers.push_back(2);                            
    integers.push_back(3);                            
-   integers.push_back(4);                            
+   integers.push_back(4); 
+   vector<A> vectorA;
+   vectorA.push_back(A(0,0));                           
+   vectorA.push_back(A(1,1));                           
+   vectorA.push_back(A(2,2));
+   printVector(vectorA);                           
 
    cout << "\nThe size of integers is: " << integers.size()
       << "\nThe capacity of integers is: " << integers.capacity();
