@@ -22,6 +22,14 @@ public:
       this->a=a;
       this->b=b;
    }
+
+   A(const A& obj)
+   {
+      this->a = obj.a;
+      this->b = obj.b;
+
+   }  // Constructor copia
+
    int operator[](int i)
    {
       if(i == 0)

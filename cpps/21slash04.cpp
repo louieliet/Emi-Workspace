@@ -6,14 +6,32 @@
 #include <algorithm> // copy algorithm
 #include <iterator> // ostream_iterator iterator
 #include <stdexcept> // out_of_range exception
+#include "19slash04v2.cpp"
 using namespace std;
 
 int main() {
 
    vector<int> values{1, 2, 3, 4, 5, 6};
-   vector<int> integers{values.cbegin(), values.cend()};
+   vector<int>::iterator iterador = values.begin();
+   vector<A> vectorA={A(0,0),A(12,12)};
+   *iterador = 100;
+   cout << values[0] << endl;
+   *(++iterador) = 101;
+   for(int &j : values)
+   {
+       cout << j << " ";
+   };
+
+
+   vector<int> integers{values.cbegin(), values.cend()}; //range
+   int arreglo[]={1,2,3,4,5,6};
+   vector<int> enteros(arreglo, arreglo+5);  //range
+   cout << enteros[0] << endl;
    ostream_iterator<int> output{cout, " "};
 
+   //line 14==line 16
+
+    /*
    cout << "Vector integers contains: ";
    copy(integers.cbegin(), integers.cend(), output);
 
@@ -55,5 +73,6 @@ int main() {
    integers.clear();  
    cout << "\nAfter clear, vector integers " 
       << (integers.empty() ? "is" : "is not") << " empty" << endl;
+    */
 } 
 
