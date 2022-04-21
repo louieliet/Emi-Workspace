@@ -13,6 +13,9 @@ int main() {
 
    vector<int> values{1, 2, 3, 4, 5, 6};
    vector<int>::iterator iterador = values.begin();
+    A objA1(0,0);
+    A objA2(12,12);
+
    vector<A> vectorA={A(0,0),A(12,12)};
    *iterador = 100;
    cout << values[0] << endl;
@@ -22,6 +25,20 @@ int main() {
        cout << j << " ";
    };
 
+   for(auto &x : vectorA)
+   {
+       cout << x << " ";
+   };
+
+   for(auto &z : vectorA)
+   {
+       cout << z << " ";
+       z.setA(9);
+       z.setB(20);
+   };
+
+   cout<<objA1<<objA2<<endl; 
+   cout<<vectorA[0]<<endl;
 
    vector<int> integers{values.cbegin(), values.cend()}; //range
    int arreglo[]={1,2,3,4,5,6};

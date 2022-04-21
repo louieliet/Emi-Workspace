@@ -17,6 +17,16 @@ private:
 
 public:
 
+   void setA(int a)
+   {
+      this->a=a;
+   }
+   
+   void setB(int b)
+   {
+      this->b=b;
+   }
+
    A(int a, int b)
    {
       this->a=a;
@@ -27,6 +37,7 @@ public:
    {
       this->a = obj.a;
       this->b = obj.b;
+      cout << "Constructor copia" << endl;
 
    }  // Constructor copia
 
@@ -47,7 +58,7 @@ public:
 
 };
 
-int main() {
+/*int main() {
    vector<int> integers; // create vector of ints
 
    cout << "The initial size of integers is: " << integers.size()
@@ -100,4 +111,4 @@ template <typename T> void printVector(const vector<T>& integers2) {
       cout << *constIterator << ' ';                       
    }                                                       
 }
-
+*/
