@@ -13,8 +13,8 @@ int main() {
 
    vector<int> values{1, 2, 3, 4, 5, 6};
    vector<int>::iterator iterador = values.begin();
-    A objA1(0,0);
-    A objA2(12,12);
+   A objA1(0,0);
+   A objA2(12,12);
 
    vector<A> vectorA={A(0,0),A(12,12)};
    *iterador = 100;
