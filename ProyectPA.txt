@@ -39,3 +39,5 @@ output -> id emi lleva programación avanzada
 
 14.8 creating a random access file
 learning.oreilly
+
+binary file
