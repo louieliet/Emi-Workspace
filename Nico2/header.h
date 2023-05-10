@@ -4,8 +4,6 @@
 #include <vector>
 using namespace std;
 
-
-
 #define MAX_SKU 5
 
 enum ProductType
@@ -24,6 +22,7 @@ struct Product {
     string brand;
 
 };
+
 struct ProductSaled {
     Product product;
     int quantity;
@@ -93,7 +92,7 @@ public:
                 product[i].sku = setsku();
                 product[i].name = product[0].name;
                 product[i].price = product[0].price;
-                product[i].brand = temp[i].brand;
+                product[i].brand = product[0].brand;
 
             }
         }
@@ -179,6 +178,7 @@ class SalesManagement {
 public:
     SalesManagement(InventoryManagement*);
     void Sale();
+    void SalesReport();
 
 private:
     int saleID;
@@ -190,18 +190,36 @@ private:
 void SalesManagement::Sale() {
     ProductSaled* p = this->inventory->saleFunctionality();
 
-    
-
     for (int i = 0; i < p->quantity; i++)
     {
+        cout << "You bought: " << endl;
         cout << p[i].product.name << endl;
-        cout << p[i].product.brand << endl;
-        cout << p[i].product.price << endl;
-        cout << p[i].product.iD << endl;
-        cout << p[i].product.sku << endl;
+        cout << "From: " << p[i].product.brand << endl;
+        cout << "For $ " << p[i].product.price << endl;
+        cout << "ID:" << p[i].product.iD << endl;
+        cout << "SKU" << p[i].product.sku << endl;
     }
     
     productsSaled.push_back(p);
+
+}
+
+void SalesManagement::SalesReport(){
+
+    double totalprice{0};
+    int totalquantity{0};
+
+    for(auto i : productsSaled){
+        cout << "Product: " << i->product.name << endl;
+        cout << "Price: $" << i->product.price << endl;
+        totalprice += i->product.price;
+        cout << "Brand: " << i->product.brand << endl;
+        totalquantity += i->quantity;
+    }
+
+    cout << "\n--------------------------------------------------";
+    cout << "Total sale: $" << totalprice << endl;
+    cout << "For: " << totalquantity << " items" << endl;
 
 }
 
