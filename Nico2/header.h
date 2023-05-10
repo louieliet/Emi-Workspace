@@ -89,6 +89,8 @@ public:
             }
         }
 
+        delete[] temp;
+
         this->stock += rs;
 
     }
@@ -147,7 +149,7 @@ public:
     void SeeProducts();
     void getData();
     void restockFunctionality();
-
+    
 
 private:
     Batch* batch;
@@ -157,12 +159,23 @@ private:
 
 class SalesManagement {
 public:
+    SalesManagement(InventoryManagement*);
     void searchSaleID();
+    void totalSale();
 
 private:
-    InventoryManagement inventory;
+    int saleID;
+    double price;
+    InventoryManagement* inventory;
 };
 
+void SalesManagement::totalSale(){
+    
+}
+
+SalesManagement::SalesManagement(InventoryManagement* inventory){
+    this->inventory = inventory;
+}
 
 void InventoryManagement::newBatch() {
     int n;

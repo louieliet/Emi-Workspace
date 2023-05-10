@@ -7,7 +7,7 @@ int main()
 	srand(time(nullptr));
 
 	InventoryManagement inventoryManagementM;
-	SalesManagement salesManagemet;
+	SalesManagement salesManagemet(&inventoryManagementM);
 	cout << "\n-------First Add Products\n";
 	inventoryManagementM.newBatch();
 	cout << "\n";
