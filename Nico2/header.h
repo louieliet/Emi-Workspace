@@ -24,6 +24,41 @@ class Batch{
 public:
     void getData();
 
+    Product getproduct(){
+        return product;
+    }
+    int getstock(){
+        return stock;
+    }
+    string getexpDate(){
+        return expDate;
+    }
+    string getbrand(){
+        return brand;
+    }
+    string getlaboratory(){
+        return laboratory;
+    }
+
+    
+    void setproduct(Product p){
+        this->product = p;
+    }
+    void setstock(int s){
+        this->stock = s;
+    }
+    void setexpDate(string d){
+        this->expDate = d;
+    }
+    void setbrand(string b){
+        this->brand = b;
+    }
+    void setlaboratory(string l){
+        this->laboratory = l;
+    }
+
+
+
     
 private:
     Product product;
@@ -74,19 +109,28 @@ InventoryManagment::InventoryManagment(){
         cout << "SKU product: " << endl;
         cin >> producto.sku;
 
-        this->batch[i].product = producto;
+        this->batch[i].setproduct(producto);
         
         cout << "Stock of the Bach: " << endl;
-        cin >> this->batch[i].stock;
+        int stock;
+        cin >>  stock;
+        this->batch[i].setstock(stock);
+
 
         cout << "Expiration Date of the Bach: " << endl;
-        cin >> this->batch[i].expDate;
+        string date;
+        cin >> date;
+        this->batch[i].setexpDate(date);
 
         cout << "Brand of the Bach: " << endl;
-        cin >> this->batch[i].brand;
+        string brand;
+        cin >> brand;
+        this->batch[i].setbrand(brand);
 
         cout << "Laboratory of the Bach: " << endl;
-        cin >> this->batch[i].laboratory;
+        string lab;
+        cin >> lab;
+        this->batch[i].setlaboratory(lab);
 
         this->numberofBatches++;
 
@@ -98,21 +142,22 @@ InventoryManagment::InventoryManagment(){
 
 void Batch::getData(){
     cout << this->product.name << endl;
-    cout << this->product.name << endl;
-    cout << this->product.name << endl;
-    cout << this->product.name << endl;
-    cout << this->product.name << endl;
-    cout << this->product.name << endl;
-    cout << this->product.name << endl;
-    cout << this->product.name << endl;
+    cout << this->product.iD << endl;
+    cout << this->product.price << endl;
+    cout << this->product.sku << endl;
+    cout << this->stock << endl;
+    cout << this->expDate << endl;
+    cout << this->brand << endl;
+    cout << this->laboratory << endl;
+
 }
 
 
 void InventoryManagment::searchFunctionality(){
     
     int option;
-    string name;
-    
+    string search;
+
     do
     {
 
@@ -122,10 +167,11 @@ void InventoryManagment::searchFunctionality(){
         {
             case 1:
                 cout << "Give me the name of the product: " << endl;
-                cin >> name;
+                cin >> search;
 
                 for(int i = 0; i < this->numberofBatches; i++){
-                    if(name == this->batch[i].product.name){
+                    Product producto = this->batch[i].getproduct();
+                    if(search == producto.name){
                         this->batch[i].getData();
                     }
                     else{
@@ -137,24 +183,27 @@ void InventoryManagment::searchFunctionality(){
                 break;
             case 2:
                 cout << "Give me the SKU of the product: " << endl;
-                cin >> name;
+                cin >> search;
 
+                    
                 for(int i = 0; i < this->numberofBatches; i++){
-                    if(name == this->batch[i].product.sku){
-                        
+                    Product producto = this->batch[i].getproduct();
+                    if(search == producto.sku){
+                        this->batch[i].getData();
                     }
                     else{
                         cout << "\nProduct not finded" << endl;
                     }
                     
                 }
+
                 break;
             case 3:
                 cout << "Give me the brand of the product: " << endl;
-                cin >> name;
+                cin >> search;
 
                 for(int i = 0; i < this->numberofBatches; i++){
-                    if(name == this->batch[i].brand){
+                    if(search == this->batch[i].getbrand()){
                         
                     }
                     else{
@@ -165,10 +214,10 @@ void InventoryManagment::searchFunctionality(){
                 break;
             case 4:
                 cout << "Give me the laboratory of the product: " << endl;
-                cin >> name;
+                cin >> search;
 
                 for(int i = 0; i < this->numberofBatches; i++){
-                    if(name == this->batch[i].laboratory){
+                    if(search == this->batch[i].getlaboratory()){
                         
                     }
                     else{
