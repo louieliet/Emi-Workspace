@@ -85,6 +85,7 @@ public:
                 product[i].sku = temp[i].sku;
                 product[i].name = temp[i].name;
                 product[i].price = temp[i].price;
+                product[i].brand = temp[i].brand;
 
             }
             else {
@@ -92,6 +93,7 @@ public:
                 product[i].sku = setsku();
                 product[i].name = product[0].name;
                 product[i].price = product[0].price;
+                product[i].brand = temp[i].brand;
 
             }
         }
@@ -106,32 +108,33 @@ public:
 
         Product* temp = this->product;
         ProductSaled* newProd;
+        newProd = new ProductSaled[m];
+        
 
         this->product = new Product[stock - m];
-        for (int i = 0; i <= this->stock + m; i++)
-        {   
-            if(i < this->stock - m){
-                product[i].iD = temp[i].iD;
-                product[i].sku = temp[i].sku;
-                product[i].name = temp[i].name;
-                product[i].price = temp[i].price;
-            }
-            else{
-                newProd = new ProductSaled[m];
-                for (int j = 0; j < m; j++)
-                {
-                    newProd[j].product.iD = temp[i].iD;
-                    newProd[j].product.sku = temp[i].sku;
-                    newProd[j].product.sku = temp[i].name;
-                    newProd[j].product.price = temp[i].price;
-                }
-                
-            }
+        this->stock -= m;
+
+        for (int i = 0; i < this->stock; i++)
+        {
+
+            product[i].iD = temp[i].iD;
+            product[i].sku = temp[i].sku;
+            product[i].name = temp[i].name;
+            product[i].price = temp[i].price;
+            product[i].brand = temp[i].brand;
+            
         }
+        for(int i = 0; i < m; i++){
+            newProd[i].quantity = m;
+            newProd[i].product.brand = temp[this->stock+i].brand;
+            newProd[i].product.iD = temp[this->stock+i].iD;
+            newProd[i].product.name = temp[this->stock+i].name;
+            newProd[i].product.price = temp[this->stock+i].price;
+        }
+
 
         delete[] temp;
 
-        this->stock -= m;
 
         return newProd;
 
@@ -160,10 +163,10 @@ class InventoryManagement {
 public:
     void newBatch();
     void searchFunctionality();
-    ProductSaled* saleFunctionality();
     void SeeProducts();
     void getData();
     void restockFunctionality();
+    ProductSaled* saleFunctionality();
 
 
 private:
@@ -175,7 +178,6 @@ private:
 class SalesManagement {
 public:
     SalesManagement(InventoryManagement*);
-    void searchSaleID();
     void Sale();
 
 private:
@@ -185,9 +187,11 @@ private:
     vector<ProductSaled*> productsSaled;
 };
 
-void SalesManagement::Sale(){
+void SalesManagement::Sale() {
     ProductSaled* p = this->inventory->saleFunctionality();
+
     
+
     for (int i = 0; i < p->quantity; i++)
     {
         cout << p[i].product.name << endl;
@@ -198,12 +202,12 @@ void SalesManagement::Sale(){
     }
     
     productsSaled.push_back(p);
-    
+
 }
 
-SalesManagement::SalesManagement(InventoryManagement* inventory){
+SalesManagement::SalesManagement(InventoryManagement* inventory) {
     this->inventory = inventory;
-    
+
 }
 
 void InventoryManagement::newBatch() {
@@ -294,44 +298,41 @@ void InventoryManagement::restockFunctionality() {
 ProductSaled* InventoryManagement::saleFunctionality() {
 
     int option, flag = 0, revstock, flag1 = 0;
-    string search,cho;
+    string search, cho;
     ProductSaled* p;
-    
+
 
     if (this->numberofBatches != 0)
     {
-        do
-        {
-                /* code */
 
-            cout << "Give me the name of the product: " << endl;
-            cin >> search;
-            for (int i = 0; i < this->numberofBatches; i++) {
-                Product* producto = this->batch[i].getproduct();
-                if (search == producto->name) {
-                    do
+        cout << "Give me the name of the product: " << endl;
+        cin >> search;
+        for (int i = 0; i < this->numberofBatches; i++) {
+            Product* producto = this->batch[i].getproduct();
+            if (search == producto->name) {
+                do
+                {
+                    cout << "\nHow many: " << endl;
+                    cin >> revstock;
+                    if (this->batch->getstock() < revstock)
                     {
-                        cout << "\nHow many: " << endl;
-                        cin >> revstock;
-                        if (this->batch->getstock() < revstock)
-                        {
-                            cout << "\nChoose another quantity";
-                        }
-                        else {
-                            p = this->batch[i].destock(revstock);
-                            return p;
-                        }
-                    } while (flag1 = !1);
-                    flag = 1;
+                        cout << "\nChoose another quantity";
+                    }
+                    else {
+                        p = this->batch[i].destock(revstock);
+                        return p;
+                    }
+                } while (flag1 = !1);
+                flag = 1;
 
-                }
             }
-            if (flag == 0) cout << "\nProduct not finded" << endl;
-            system("cls");
-            cout<<"\nDo you want to by another thing(yes/no):";
-            cin>>cho;
-            system("Pause");
-        }while(cho!="no");
+        }
+        if (flag == 0) cout << "\nProduct not finded" << endl;
+        system("cls");
+        cout << "\nDo you want to by another thing(yes/no):";
+        cin >> cho;
+        system("Pause");
+        
     }
 
     else cout << "\nEmpty Batches";

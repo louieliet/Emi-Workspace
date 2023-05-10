@@ -22,6 +22,11 @@ int main()
 		switch (option)
 		{
 		case 1:
+			system("cls");
+			cout << "\n-------Sale\n";
+			salesManagemet.Sale();
+			cout << "\n";
+			system("Pause");
 			break;
 		case 2:
 			break;
