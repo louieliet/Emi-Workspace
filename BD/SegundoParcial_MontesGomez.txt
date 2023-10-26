@@ -1,0 +1,97 @@
+/*
+Emiliano Montes Gómez
+0241718
+Ing. en Animación y Videojuegos
+
+Normalización:
+    La normalización en bases de datos es un proceso para organizar datos de manera eficiente y sin duplicación. 
+    Se divide una tabla grande en tablas más pequeñas para eliminar problemas de redundancia y asegurar la integridad de los datos. 
+    Se siguen reglas como la Primera, Segunda y Tercera Forma Normal para lograrlo. 
+    La normalización evita errores y asegura la consistencia de los datos, pero puede hacer las consultas más complicadas. 
+
+Primera forma normal:
+    Es el primer paso en el proceso de normalización y se centra en garantizar que los datos estén organizados de manera que cada celda contenga un solo valor, 
+    lo que facilita la manipulación y la integridad de los datos en una base de datos relacional.
+
+
+*/
+
+-- Creando la tabla de miembros
+CREATE TABLE band_members (
+    member_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    birth_date DATE,
+    instrument VARCHAR(20)
+);
+
+-- Creando la tabla de canciones
+CREATE TABLE songs (
+    song_id INT PRIMARY KEY,
+    title VARCHAR(50),
+    duration TIME,
+    album_id INT,
+    FOREIGN KEY (album_id) REFERENCES albums(album_id)
+);
+
+-- Creando la tabla de álbumes
+CREATE TABLE albums (
+    album_id INT PRIMARY KEY,
+    title VARCHAR(50),
+    release_date DATE
+);
+
+-- Agregando registros a la tabla de miembros
+INSERT INTO band_members (member_id, first_name, last_name, birth_date, instrument) VALUES
+(1, 'Jim', 'Morrison', '1943-12-08', 'Vocals'),
+(2, 'Ray', 'Manzarek', '1939-02-12', 'Keyboard'),
+(3, 'Robby', 'Krieger', '1946-01-08', 'Guitar'),
+(4, 'John', 'Densmore', '1944-12-01', 'Drums');
+
+-- Agregando registros a la tabla de canciones
+INSERT INTO songs (song_id, title, duration, album_id) VALUES
+(1, 'Break on Through (To the Other Side)', '2:29', 1),
+(2, 'Soul Kitchen', '3:35', 1),
+(3, 'The Crystal Ship', '2:34', 1),
+(4, 'Twentieth Century Fox', '2:33', 1),
+(5, 'Alabama Song (Whisky Bar)', '3:20', 1);
+
+-- Agregando registros a la tabla de albumes
+INSERT INTO albums (album_id, title, release_date) VALUES
+(1, 'The Doors', '1967-01-04'),
+(2, 'Strange Days', '1967-09-25'),
+(3, 'Waiting for the Sun', '1968-07-03'),
+(4, 'The Soft Parade', '1969-07-18'),
+(5, 'Morrison Hotel', '1970-02-09'),
+(6, 'L.A. Woman', '1971-04-19');
+
+
+-- Selección de todos los registros de las tablas
+SELECT * FROM band_members;
+SELECT * FROM songs;
+SELECT * FROM albums;
+
+-- Suma de la duración de todas las canciones
+SELECT SUM(duration) FROM songs;
+
+-- Selección de todos los registros de las tablas ordenados por fecha de lanzamiento
+SELECT * FROM albums ORDER BY release_date ASC;
+
+-- Selección de todos los registros de los miembros de la banda que tocan el teclado
+SELECT * FROM band_members WHERE instrument = 'Vocals';
+
+-- Insertar un nuevo registro en la tabla de canciones
+INSERT INTO songs (song_id, title, duration, album_id) VALUES (11, 'The End', '11:41', 1);
+
+
+-- Eliminando a Jim Morrison
+DELETE FROM band_members WHERE last_name = 'Morrison';
+
+-- Contando el número de canciones
+SELECT albums.title, COUNT(songs.song_id) AS total_songs
+FROM albums
+LEFT JOIN songs ON albums.album_id = songs.album_id
+GROUP BY albums.album_id;
+
+-- Tipo de dato
+SELECT type FROM sqlite_master WHERE name = 'songs' AND sql LIKE '%duration%';
