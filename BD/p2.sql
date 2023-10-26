@@ -86,4 +86,4 @@ LEFT JOIN fouls ON players.player_id = fouls.player_id
 GROUP BY players.player_id;
 
 -- Getting the data type of a field
-SELECT DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'players' AND COLUMN_NAME = 'goals';
+SELECT type FROM sqlite_master WHERE name = 'players' AND sql LIKE '%goals%';
